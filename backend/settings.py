@@ -31,8 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-0k*p9i620z0j!3-#wrw!e
 DEBUG = False
 
 # Allow connections from localhost and local network
-#ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
-ALLOWED_HOSTS=*
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 
 # CORS configuration for local development
 # Allow requests from localhost and local network devices
@@ -70,10 +69,7 @@ MIDDLEWARE = [
 # For development: also allow any IP on 192.168 and 10.0 networks (common private ranges)
 if DEBUG:
     CORS_ALLOW_ALL_ORIGINS = False
-    CSRF_TRUSTED_ORIGINS = os.environ.get(
-        'CSRF_TRUSTED_ORIGINS',
-        'http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000,http://127.0.0.1:3000'
-    ).split(',')
+    CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",")
 
 ROOT_URLCONF = 'backend.urls'
 

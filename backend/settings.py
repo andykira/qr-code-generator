@@ -30,12 +30,14 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-0k*p9i620z0j!3-#wrw!e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-# Allow connections from localhost and local network
+# ALLOWED_HOSTS
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 
-# CORS configuration for local development
-# Allow requests from localhost and local network devices
-CORS_ALLOWED_ORIGINS = True
+# CSRF Trusted Origins pour prod
+CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",")
+
+# CORS
+CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS", "").split(",")
 # Application definition
 
 INSTALLED_APPS = [
